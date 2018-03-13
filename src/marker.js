@@ -1,30 +1,35 @@
-const mapbox = require("mapbox-gl");
+const mapboxgl = require('mapbox-gl');
 
 const iconURLs = {
-    hotels: "http://i.imgur.com/D9574Cu.png",
-    restaurants: "http://i.imgur.com/cqR6pUI.png",
-    activities: "http://i.imgur.com/WbMOfMl.png"
+	hotels: 'http://i.imgur.com/D9574Cu.png',
+	restaurants: 'http://i.imgur.com/cqR6pUI.png',
+	activities: 'http://i.imgur.com/WbMOfMl.png'
 };
 
-const markerDomEl = document.createElement("div");
+function buildMarker(type, coordinates) {
+	const newMarker = document.createElement('div');
+	newMarker.style.width = '32px';
+	newMarker.style.height = '39px';
 
-
-function buildMarker (type, coordinates) {
-  const domEl = document.createElement("div");
-  markerDomEl.style.width = "32px";
-  markerDomEl.style.height = "39px";
-  const marker = new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
+	if (type === 'hotel') {
+		const hotelMarker = new mapboxgl.Marker(newMarker).setLngLat(coordinates);
+		newMarker.style.backgroundImage = `url(${iconURLs.hotels})`;
+		return hotelMarker;
+	} else if (type === 'restaurant') {
+		const restaurantMarker = new mapboxgl.Marker(newMarker).setLngLat(
+			coordinates
+		);
+		newMarker.style.backgroundImage = `url(${iconURLs.restaurants})`;
+		return restaurantMarker;
+	} else if (type === 'activity') {
+		const activityMarker = new mapboxgl.Marker(newMarker).setLngLat(
+			coordinates
+		);
+		newMarker.style.backgroundImage = `url(${iconURLs.activities})`;
+		return activityMarker;
+	} else {
+		console.log('Requested unknown marker type.');
+	}
 }
 
-
-
-
 module.exports = buildMarker;
-
-
-const markerDomEl = document.createElement("div"); // Create a new, detached DIV
-markerDomEl.style.width = "32px";
-markerDomEl.style.height = "39px";
-markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
-
-new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
