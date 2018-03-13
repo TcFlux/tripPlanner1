@@ -8,6 +8,10 @@ body {
 	background-color: #c1b5ad;
 }
 
+ul > button {
+	margin-left: 4px;
+}
+
 #map {
 	height: 100vh;
 	width: 100vw;
@@ -27,6 +31,7 @@ body {
 	flex-flow: column;
 	position: absolute;
 	width: 31%;
+	height: 100%;
 	right: 0;
 	top: 0;
 }
@@ -34,7 +39,20 @@ body {
 #dropdowns {
 	padding: 15% 5%;
 	background-color: tan;
+	flex: 1 1 50%;
 }
 
 #itenerary {
+	padding: 5% 5%;
+	background-color: mediumspringgreen;
+	flex: 1 1 50%;
+	width: 100%;
+	align-self: flex-end;
+}
+
+#itenerarytitle {
+	padding: 5% 5%;
+	background-color: gold;
+	margin-top: 5%;
+	width: 100%;
 }
